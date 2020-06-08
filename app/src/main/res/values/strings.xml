@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Maallik_com</string>
+
+    <string name="navigation_drawer_open">Open Navigation Drawer</string>
+    <string name="navigation_drawer_close">Close Navigation Drawer</string>
+
+    <string name="nav_text_new_property">New Property</string>
+</resources>
