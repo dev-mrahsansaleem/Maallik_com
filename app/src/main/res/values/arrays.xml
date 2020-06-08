@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <string-array name="UnitS">
+        <item>Unit</item>
+        <item>Marla</item>
+        <item>Kanal</item>
+        <item>Square Feet</item>
+        <item>Square Meters</item>
+        <item>Square Yards</item>
+    </string-array>
+
+    <string-array name="periodUnitS">
+        <item>Choose</item>
+        <item>Month</item>
+        <item>Year</item>
+    </string-array>
+
+    <string-array name="propertyPurpose">
+        <item>Choose</item>
+        <item>Rent</item>
+        <item>Sale</item>
+    </string-array>
+
+    <string-array name="propertyType">
+        <item>Choose</item>
+        <item>Home</item>
+        <item>Plot</item>
+        <item>Commercial</item>
+    </string-array>
+
+    <string-array name="propertyUnit">
+        <item>Choose</item>
+    </string-array>
+
+    <string-array name="maintainceCharges">
+        <item>Choose</item>
+        <item>Tenant</item>
+        <item>LandLord</item>
+    </string-array>
+
+    <string-array name="Homecategory">
+        <item>Choose</item>
+        <item>House</item>
+        <item>Flat</item>
+        <item>Upper Portion</item>
+        <item>Lower Portion</item>
+        <item>Farm House</item>
+        <item>Pent House</item>
+        <item>Room</item>
+    </string-array>
+
+    <string-array name="PlotCategory">
+        <item>Choose</item>
+        <item>Residential Plot</item>
+        <item>Commercial Plot</item>
+        <item>Agricultural Land</item>
+        <item>Industrial Land</item>
+        <item>Plot File</item>
+        <item>Plot Form</item>
+    </string-array>
+
+<string-array name="CommercialCategory">
+    <item>Choose</item>
+    <item>Office</item>
+    <item>Shop</item>
+    <item>Warehouse</item>
+    <item>Factory</item>
+    <item>Farm House</item>
+    <item>Building</item>
+    <item>Other</item>
+</string-array>
+    
+    <string-array name="features">
+        <item>Choose</item>
+        <item>Kitchen</item>
+        <item>Furnished</item>
+        <item>Marble</item>
+        <item>Wood Work</item>
+    </string-array>
+</resources>
