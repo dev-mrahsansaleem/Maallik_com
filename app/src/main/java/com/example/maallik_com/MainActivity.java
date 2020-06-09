@@ -49,7 +49,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_New_Property:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_Container, new NewPropertyFragment()).commit();
                 break;
-
+            case R.id.nav_image:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_Container, new ImageFragment()).commit();
+                break;
+            case R.id.nav_Multiple_image:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_Container, new MultipleImageFragment()).commit();
+                break;
         }
         drawer.closeDrawer(GravityCompat.START);
         return true;
