@@ -76,8 +76,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:orientation="horizontal"
-                android:visibility="gone"
-                >
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/categorylbl"
@@ -315,11 +314,10 @@
                 android:focusableInTouchMode="true"
                 android:hint="Rental Price"
                 android:textColorHint="@color/gray"
-                app:boxStrokeColor="@color/gray"
-                app:hintTextColor="@color/red"
-
                 android:visibility="gone"
-                >
+                app:boxStrokeColor="@color/gray"
+
+                app:hintTextColor="@color/red">
 
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -339,9 +337,9 @@
                 android:focusableInTouchMode="true"
                 android:hint="Advance Price"
                 android:textColorHint="@color/gray"
+                android:visibility="gone"
                 app:boxStrokeColor="@color/gray"
-                app:hintTextColor="@color/red"
-                android:visibility="gone">
+                app:hintTextColor="@color/red">
 
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -388,9 +386,9 @@
                 android:focusableInTouchMode="true"
                 android:hint="No. of Bed Rooms"
                 android:textColorHint="@color/gray"
+                android:visibility="gone"
                 app:boxStrokeColor="@color/gray"
-                app:hintTextColor="@color/red"
-                android:visibility="gone">
+                app:hintTextColor="@color/red">
 
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -411,9 +409,9 @@
                 android:focusableInTouchMode="true"
                 android:hint="No. of Bath Rooms"
                 android:textColorHint="@color/gray"
+                android:visibility="gone"
                 app:boxStrokeColor="@color/gray"
-                app:hintTextColor="@color/red"
-                android:visibility="gone">
+                app:hintTextColor="@color/red">
 
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -472,6 +470,7 @@
                     android:textSize="14dp" />
 
             </com.google.android.material.textfield.TextInputLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -479,28 +478,42 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/chooseFilebtn"
+                    android:id="@+id/btnChooseFile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:onClick="onChoose"
                     android:padding="10dp"
                     android:text="Choose Image" />
 
-                <TextView
-                    android:id="@+id/chooseFilelbl"
+                <HorizontalScrollView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="No File chosen"
-                    android:textColor="@color/dark_gray"
-                    android:textSize="14sp" />
+                    android:layout_gravity="center_vertical">
+
+                    <LinearLayout
+                        android:id="@+id/files"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="No File chosen"
+                            android:textColor="@color/dark_gray"
+                            android:textSize="16sp" />
+
+                    </LinearLayout>
+
+
+                </HorizontalScrollView>
             </LinearLayout>
 
 
             <Button
-                android:id="@+id/submitbtn"
+                android:id="@+id/btnSubmit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:onClick="onSubmit"
                 android:padding="10dp"
                 android:text="Submit" />
 
