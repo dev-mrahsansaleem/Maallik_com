@@ -9,6 +9,7 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -27,6 +29,7 @@ import androidx.fragment.app.Fragment;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -36,17 +39,23 @@ import static android.app.Activity.RESULT_OK;
 public class MultipleImageFragment extends Fragment {
     private static final int requestCodeGallery = 123;
 
-    View v;
-    ImageView imageView;
-    Button button;
+    private View v;
+    private ArrayList<Uri> uriList = new ArrayList<Uri>();
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_multiple_images, container, false);
+
+
+        ImageView imageView;
+        Button btnOpenGallery;
+        Button btnShareImages;
         imageView = v.findViewById(R.id.image_view);
-        button = v.findViewById(R.id.btnOpenGallery);
-        button.setOnClickListener(new View.OnClickListener() {
+
+        btnOpenGallery = v.findViewById(R.id.btnOpenGallery);
+
+        btnOpenGallery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -61,6 +70,23 @@ public class MultipleImageFragment extends Fragment {
                 startActivityForResult(Intent.createChooser(intent, "Pick An Image"), requestCodeGallery);
             }
         });
+        btnShareImages = v.findViewById(R.id.btnShareImages);
+        btnShareImages.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (uriList.size() > 0) {
+                    Toast.makeText(v.getContext(), uriList.size() + " image selected to share", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent();
+                    intent.setAction(Intent.ACTION_SEND_MULTIPLE);
+                    intent.putExtra(Intent.EXTRA_SUBJECT, "Here are some files.");
+                    intent.setType("image/*");
+                    intent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uriList);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(v.getContext(), "no image selected", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
         return v;
     }
 
@@ -68,7 +94,6 @@ public class MultipleImageFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if (requestCode == requestCodeGallery && resultCode == RESULT_OK && data != null) {
 
-            List<Uri> uriList = new ArrayList<Uri>();
 
             ClipData clipData = data.getClipData();
 
@@ -85,20 +110,20 @@ public class MultipleImageFragment extends Fragment {
                 uriList.add(uri);
             }
 
-            for(Uri uri:uriList)
-            {
+            for (Uri uri : uriList) {
                 ImageView image = new ImageView(getContext());
-//                    LinearLayout.LayoutParams vp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-                LinearLayout.LayoutParams vp = new LinearLayout.LayoutParams(200, 200);
+                LinearLayout.LayoutParams vp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
+//                LinearLayout.LayoutParams vp = new LinearLayout.LayoutParams(200, 200);
                 image.setLayoutParams(vp);
-                image.setMaxHeight(100);
-                image.setMaxWidth(100);
+                image.setMinimumHeight(100);
+                image.setMinimumWidth(100);
                 image.setImageURI(uri);
-                image.setPadding(10,10,10,10);
+                image.setPadding(10, 10, 10, 10);
                 LinearLayout images_layout = v.findViewById(R.id.images_view);
+
                 images_layout.addView(image);
 
-                TextView textView=new TextView(getContext());
+                TextView textView = new TextView(getContext());
                 textView.setText(uri.toString());
                 textView.setTextColor(Color.parseColor("#ffffff"));
                 LinearLayout theLayout = v.findViewById(R.id.names_view);
